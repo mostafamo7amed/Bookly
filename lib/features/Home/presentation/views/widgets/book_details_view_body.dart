@@ -1,6 +1,8 @@
+import 'package:bookly/features/Home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
+import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
 import 'custom_book_item.dart';
 
@@ -17,11 +19,11 @@ class BookDetailsViewBody extends StatelessWidget {
         children: [
           const CustomBookDetailsAppBar(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * 0.2),
+            padding: EdgeInsets.symmetric(horizontal: width * 0.24),
             child: const CustomBookItem(),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Text(
             'The Imperfection of Memory',
@@ -31,7 +33,7 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 6,
+            height: 5,
           ),
           Opacity(
             opacity: 0.7,
@@ -42,11 +44,32 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
-          const BookRating(mainAxisAlignment: MainAxisAlignment.center,),
+          const BookRating(
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          const BookAction(),
+          const SizedBox(
+            height: 5,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'You can also like',
+              textAlign: TextAlign.start,
+              style: Styles.textStyle18.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          const SimilarBooksListView(),
         ],
       ),
     );
   }
+
 }
