@@ -6,10 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'core/utils/app_router.dart';
+import 'core/utils/observer.dart';
 import 'features/Home/presentation/view_models/newest_books_cubit/newest_books_cubit.dart';
 
 void main() {
   setupServices();
+  Bloc.observer = MyBlocObserver();
   runApp(const BookLy());
 }
 
@@ -22,10 +24,10 @@ class BookLy extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImpl>())..getFeaturedBooks(),
         ),
         BlocProvider(
-          create: (context) => NewestBooksCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) => NewestBooksCubit(getIt.get<HomeRepoImpl>())..getNewestBooks(),
         ),
       ],
       child: MaterialApp.router(

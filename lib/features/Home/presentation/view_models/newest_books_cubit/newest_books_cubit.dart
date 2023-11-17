@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bookly/features/Home/data/repos/home_repo.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/BookModel.dart';
+import '../../../data/models/book_model.dart';
 
 part 'newest_books_state.dart';
 

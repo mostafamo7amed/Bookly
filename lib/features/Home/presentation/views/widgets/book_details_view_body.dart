@@ -1,14 +1,16 @@
 import 'package:bookly/features/Home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../data/models/book_model.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
 import 'custom_book_item.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({Key? key}) : super(key: key);
+  const BookDetailsViewBody({Key? key, required this.bookModel}) : super(key: key);
 
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -24,13 +26,14 @@ class BookDetailsViewBody extends StatelessWidget {
                 const CustomBookDetailsAppBar(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.24),
-                  child: const CustomBookItem(),
+                  child: CustomBookItem(bookModel: bookModel),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'The Imperfection of Memory',
+                  '${bookModel.volumeInfo.title}',
+                  textAlign: TextAlign.center,
                   style: Styles.textStyle25.copyWith(
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,
@@ -42,7 +45,8 @@ class BookDetailsViewBody extends StatelessWidget {
                 Opacity(
                   opacity: 0.7,
                   child: Text(
-                    'Angelina Aludo',
+                    '${bookModel.volumeInfo.authors![0]}',
+                    textAlign: TextAlign.center,
                     style: Styles.textStyle20.copyWith(
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500),
@@ -51,8 +55,8 @@ class BookDetailsViewBody extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                const BookRating(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                BookPageCount(
+                  mainAxisAlignment: MainAxisAlignment.center, count: bookModel.volumeInfo.pageCount?? 0, lang: bookModel.volumeInfo.language??'EN',
                 ),
                 const BookAction(),
                 const Expanded(
