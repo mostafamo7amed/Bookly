@@ -1,3 +1,5 @@
+import 'package:bookly/features/Home/data/models/book_model.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_paths.dart';
@@ -6,13 +8,13 @@ import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
 class CustomBooksItem extends StatelessWidget {
-  const CustomBooksItem({Key? key}) : super(key: key);
-
+  const CustomBooksItem({required this.book,Key? key}) : super(key: key);
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppPaths.bookDetailsView);
+        GoRouter.of(context).push(AppPaths.bookDetailsView,extra: book);
       },
       child: SizedBox(
         height: 150,
@@ -20,18 +22,7 @@ class CustomBooksItem extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              AspectRatio(
-                aspectRatio: 2.7 / 4,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    image: DecorationImage(
-                      image: AssetImage(AssetData.testImage),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-              ),
+              CustomBookItem(bookModel: book),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 12.0),
@@ -39,7 +30,7 @@ class CustomBooksItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "memory landstati onmemor ymemor ymemor ymemor ymemoryvvv",
+                        book.volumeInfo.title!,
                         style:
                             Styles.textStyle20.copyWith(fontWeight: FontWeight.w600),
                         maxLines: 2,
@@ -49,7 +40,7 @@ class CustomBooksItem extends StatelessWidget {
                         height: 3,
                       ),
                       Text(
-                        "r ymemoryvvv",
+                        book.volumeInfo.authors![0],
                         style: Styles.textStyle18.copyWith(color: Colors.grey),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -57,12 +48,12 @@ class CustomBooksItem extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '99.99\$',
+                            'Free',
                             style: Styles.textStyle20
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
-                          const BookRating(),
+                          BookPageCount(count:book.volumeInfo.pageCount!, lang: book.volumeInfo.language!, ),
                         ],
                       )
                     ],
