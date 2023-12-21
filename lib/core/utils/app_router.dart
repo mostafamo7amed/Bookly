@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/Home/data/models/book_model.dart';
-import '../../features/Home/data/repos/home_repo_impl.dart';
+import '../../features/Home/Domain/models/book_model.dart';
+import '../../features/Home/Domain/repos/home_repo_impl.dart';
 import '../../features/Home/presentation/views/book_details_view.dart';
 
 abstract class AppRouter{

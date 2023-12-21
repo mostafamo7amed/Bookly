@@ -1,5 +1,5 @@
 import 'package:bookly/core/widgets/custom_loading_widget.dart';
-import 'package:bookly/features/Home/data/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/models/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,16 +14,15 @@ class CustomBookItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppPaths.bookDetailsView,extra: bookModel);
+        GoRouter.of(context).push(AppPaths.bookDetailsView, extra: bookModel);
       },
       child: ClipRRect(
-
         borderRadius: BorderRadius.circular(14),
         child: AspectRatio(
           aspectRatio: 2.6 / 4,
           child: CachedNetworkImage(
             fit: BoxFit.fill,
-            imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail?? '',
+            imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
             placeholder: (context, url) => ShimmerWidget(width: 0, height: 0),
             errorWidget: (context, url, error) => const Image(
               fit: BoxFit.fill,

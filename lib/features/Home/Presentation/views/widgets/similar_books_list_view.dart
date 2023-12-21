@@ -12,41 +12,44 @@ class SimilarBooksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
-  builder: (context, state) {
-    if (state is SimilarBooksSuccess) {
-      return SizedBox(
-        height: MediaQuery.of(context).size.height*.16,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemCount: state.books.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: CustomBookItem(bookModel:state.books[index],),
-              );
-            }),
-      );
-    }
-    else if(state is SimilarBooksFailure){
-      return CustomFailureWidget(state.failure);
-    }
-    else{
-      return SizedBox(
-        height: MediaQuery.of(context).size.height*.16,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: ShimmerWidget(width: 70, height: 100,),
-              );
-            }),
-      );
-    }
-  },
-);
+      builder: (context, state) {
+        if (state is SimilarBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .16,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemCount: state.books.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: CustomBookItem(
+                      bookModel: state.books[index],
+                    ),
+                  );
+                }),
+          );
+        } else if (state is SimilarBooksFailure) {
+          return CustomFailureWidget(state.failure);
+        } else {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .16,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: ShimmerWidget(
+                      width: 70,
+                      height: 100,
+                    ),
+                  );
+                }),
+          );
+        }
+      },
+    );
   }
 }

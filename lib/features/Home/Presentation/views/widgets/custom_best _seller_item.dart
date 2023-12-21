@@ -1,4 +1,4 @@
-import 'package:bookly/features/Home/data/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/models/book_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,13 +8,13 @@ import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
 class CustomBooksItem extends StatelessWidget {
-  const CustomBooksItem({required this.book,Key? key}) : super(key: key);
+  const CustomBooksItem({required this.book, Key? key}) : super(key: key);
   final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppPaths.bookDetailsView,extra: book);
+        GoRouter.of(context).push(AppPaths.bookDetailsView, extra: book);
       },
       child: SizedBox(
         height: 150,
@@ -31,8 +31,8 @@ class CustomBooksItem extends StatelessWidget {
                     children: [
                       Text(
                         book.volumeInfo.title!,
-                        style:
-                            Styles.textStyle20.copyWith(fontWeight: FontWeight.w600),
+                        style: Styles.textStyle20
+                            .copyWith(fontWeight: FontWeight.w600),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -53,7 +53,10 @@ class CustomBooksItem extends StatelessWidget {
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
-                          BookPageCount(count:book.volumeInfo.pageCount!, lang: book.volumeInfo.language!, ),
+                          BookPageCount(
+                            count: book.volumeInfo.pageCount!,
+                            lang: book.volumeInfo.language!,
+                          ),
                         ],
                       )
                     ],

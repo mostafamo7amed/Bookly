@@ -1,14 +1,15 @@
 import 'package:bookly/features/Home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../data/models/book_model.dart';
+import '../../../Domain/models/book_model.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
 import 'custom_book_item.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({Key? key, required this.bookModel}) : super(key: key);
+  const BookDetailsViewBody({Key? key, required this.bookModel})
+      : super(key: key);
 
   final BookModel bookModel;
   @override
@@ -56,7 +57,9 @@ class BookDetailsViewBody extends StatelessWidget {
                   height: 5,
                 ),
                 BookPageCount(
-                  mainAxisAlignment: MainAxisAlignment.center, count: bookModel.volumeInfo.pageCount?? 0, lang: bookModel.volumeInfo.language??'EN',
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  count: bookModel.volumeInfo.pageCount ?? 0,
+                  lang: bookModel.volumeInfo.language ?? 'EN',
                 ),
                 const BookAction(),
                 const Expanded(

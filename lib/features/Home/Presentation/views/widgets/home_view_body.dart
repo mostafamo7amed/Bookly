@@ -21,7 +21,9 @@ class HomeViewBody extends StatelessWidget {
                 const FeaturedListView(),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Text("Best Seller",style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w700)),
+                  child: Text("Best Seller",
+                      style: Styles.textStyle20
+                          .copyWith(fontWeight: FontWeight.w700)),
                 ),
               ],
             ),
@@ -34,4 +36,3 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
