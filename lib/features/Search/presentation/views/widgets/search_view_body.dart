@@ -19,7 +19,9 @@ class SearchViewBody extends StatelessWidget {
                 const SearchField(),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Text("Search result",style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w700)),
+                  child: Text("Search result",
+                      style: Styles.textStyle20
+                          .copyWith(fontWeight: FontWeight.w700)),
                 ),
               ],
             ),

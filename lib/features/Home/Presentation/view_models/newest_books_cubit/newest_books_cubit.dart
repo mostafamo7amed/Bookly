@@ -1,20 +1,20 @@
 import 'package:bloc/bloc.dart';
-import 'package:bookly/features/Home/data/repos/home_repo.dart';
+import 'package:bookly/features/Home/Domain/repos/home_repo.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/book_model.dart';
+import '../../../Domain/models/book_model.dart';
 
 part 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this.homeRepo) : super(NewestBooksInitial());
   HomeRepo homeRepo;
-  Future<void> getNewestBooks() async{
+  Future<void> getNewestBooks() async {
     emit(NewestBooksLoading());
     var result = await homeRepo.fetchBestSellerBooks();
-    result.fold((failure){
+    result.fold((failure) {
       emit(NewestBooksFailure(failure.errorMessage));
-    }, (books){
+    }, (books) {
       emit(NewestBooksSuccess(books));
     });
   }

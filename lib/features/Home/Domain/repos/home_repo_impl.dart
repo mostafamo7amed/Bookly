@@ -1,7 +1,7 @@
 import 'package:bookly/core/errors/failures.dart';
 import 'package:bookly/core/utils/api_service.dart';
-import 'package:bookly/features/Home/data/models/book_model.dart';
-import 'package:bookly/features/Home/data/repos/home_repo.dart';
+import 'package:bookly/features/Home/Domain/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -30,9 +30,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      var data = await apiService.get(
-          endPoint:
-          'volumes?q=computer science');
+      var data = await apiService.get(endPoint: 'volumes?q=computer science');
       List<BookModel> books = [];
       print(data.length);
       for (var item in data['items']) {
@@ -48,11 +46,11 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category}) async {
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
     try {
       var data = await apiService.get(
-          endPoint:
-          'volumes?q=$category&Sorting=relevance');
+          endPoint: 'volumes?q=$category&Sorting=relevance');
       List<BookModel> books = [];
       print(data.length);
       for (var item in data['items']) {

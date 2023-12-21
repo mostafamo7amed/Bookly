@@ -4,7 +4,10 @@ import '../../../../../core/utils/styles.dart';
 
 class BookPageCount extends StatelessWidget {
   const BookPageCount(
-      {super.key, this.mainAxisAlignment = MainAxisAlignment.start, required this.count, required this.lang});
+      {super.key,
+      this.mainAxisAlignment = MainAxisAlignment.start,
+      required this.count,
+      required this.lang});
   final int count;
   final String lang;
   final MainAxisAlignment mainAxisAlignment;
@@ -32,7 +35,6 @@ class BookPageCount extends StatelessWidget {
           lang.toUpperCase(),
           style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
         ),
-
       ],
     );
   }

@@ -45,7 +45,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset(AssetData.logo,width: 150,height: 150,),
+            child: Image.asset(
+              AssetData.logo,
+              width: 150,
+              height: 150,
+            ),
           ),
           SlidingText(slidingAnimation: slidingAnimation),
           const SizedBox(

@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/service_locator.dart';
-import 'package:bookly/features/Home/data/repos/home_repo_impl.dart';
+import 'package:bookly/features/Home/Domain/repos/home_repo_impl.dart';
 import 'package:bookly/features/Home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

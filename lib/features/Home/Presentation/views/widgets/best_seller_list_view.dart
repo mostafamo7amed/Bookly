@@ -12,20 +12,22 @@ class BestSellerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NewestBooksCubit, NewestBooksState>(
       builder: (context, state) {
-        if(state is NewestBooksSuccess) {
+        if (state is NewestBooksSuccess) {
           return ListView.builder(
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount:state.books.length,
-            itemBuilder: (context, index) => CustomBooksItem(book: state.books[index],),
+            itemCount: state.books.length,
+            itemBuilder: (context, index) => CustomBooksItem(
+              book: state.books[index],
+            ),
           );
-        }else if (state is NewestBooksFailure){
+        } else if (state is NewestBooksFailure) {
           return CustomFailureWidget(state.failure);
-        }else {
+        } else {
           return ListView.builder(
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount:10,
+            itemCount: 10,
             itemBuilder: (context, index) => SizedBox(
               height: 150,
               child: Padding(
