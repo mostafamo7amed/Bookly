@@ -8,7 +8,7 @@ class NewestBooksInitial extends NewestBooksState {}
 class NewestBooksLoading extends NewestBooksState {}
 
 class NewestBooksSuccess extends NewestBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
   NewestBooksSuccess(this.books);
 }
 

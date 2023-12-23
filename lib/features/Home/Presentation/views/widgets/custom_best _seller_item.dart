@@ -1,15 +1,14 @@
-import 'package:bookly/features/Home/Domain/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/entities/book_entity.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_paths.dart';
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
 class CustomBooksItem extends StatelessWidget {
   const CustomBooksItem({required this.book, Key? key}) : super(key: key);
-  final BookModel book;
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,7 +29,7 @@ class CustomBooksItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        book.volumeInfo.title!,
+                        book.title!,
                         style: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.w600),
                         maxLines: 2,
@@ -40,7 +39,7 @@ class CustomBooksItem extends StatelessWidget {
                         height: 3,
                       ),
                       Text(
-                        book.volumeInfo.authors![0],
+                        book.bookAuthor!,
                         style: Styles.textStyle18.copyWith(color: Colors.grey),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -54,8 +53,8 @@ class CustomBooksItem extends StatelessWidget {
                           ),
                           const Spacer(),
                           BookPageCount(
-                            count: book.volumeInfo.pageCount!,
-                            lang: book.volumeInfo.language!,
+                            count: book.pageCount,
+                            lang: book.rating.toString(),
                           ),
                         ],
                       )

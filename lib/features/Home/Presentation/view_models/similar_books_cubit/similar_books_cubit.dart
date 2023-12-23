@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:bookly/features/Home/Domain/entities/book_entity.dart';
 import 'package:meta/meta.dart';
 
-import '../../../Domain/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/models/book_model/book_model/book_model.dart';
 import '../../../Domain/repos/home_repo.dart';
 
 part 'similar_books_state.dart';
