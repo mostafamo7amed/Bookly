@@ -1,7 +1,7 @@
 import 'package:bookly/features/Home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../Domain/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/models/book_model/book_model/book_model.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
@@ -33,7 +33,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  '${bookModel.volumeInfo.title}',
+                  '${bookModel.volumeInfo!.title}',
                   textAlign: TextAlign.center,
                   style: Styles.textStyle25.copyWith(
                     fontStyle: FontStyle.italic,
@@ -46,7 +46,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 Opacity(
                   opacity: 0.7,
                   child: Text(
-                    '${bookModel.volumeInfo.authors![0]}',
+                    '${bookModel.volumeInfo!.authors![0]}',
                     textAlign: TextAlign.center,
                     style: Styles.textStyle20.copyWith(
                         fontStyle: FontStyle.italic,
@@ -58,8 +58,8 @@ class BookDetailsViewBody extends StatelessWidget {
                 ),
                 BookPageCount(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  count: bookModel.volumeInfo.pageCount ?? 0,
-                  lang: bookModel.volumeInfo.language ?? 'EN',
+                  count: bookModel.volumeInfo!.pageCount ?? 0,
+                  lang: bookModel.volumeInfo!.language ?? 'EN',
                 ),
                 const BookAction(),
                 const Expanded(

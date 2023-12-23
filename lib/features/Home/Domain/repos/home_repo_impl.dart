@@ -1,6 +1,7 @@
 import 'package:bookly/core/errors/failures.dart';
 import 'package:bookly/core/utils/api_service.dart';
-import 'package:bookly/features/Home/Domain/models/book_model.dart';
+import 'package:bookly/features/Home/Domain/entities/book_entity.dart';
+import 'package:bookly/features/Home/Domain/models/book_model/book_model/book_model.dart';
 import 'package:bookly/features/Home/Domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -11,10 +12,10 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchBestSellerBooks() async {
     try {
       var data = await apiService.get(endPoint: 'volumes?q=coding');
-      List<BookModel> books = [];
+      List<BookEntity> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
