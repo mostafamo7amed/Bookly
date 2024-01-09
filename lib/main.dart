@@ -8,6 +8,7 @@ import 'constants.dart';
 import 'core/utils/app_router.dart';
 import 'core/utils/observer.dart';
 import 'features/Home/presentation/view_models/newest_books_cubit/newest_books_cubit.dart';
+import 'features/Search/presentation/view_models/search_books_cubit/search_books_cubit.dart';
 
 void main() {
   setupServices();
@@ -30,6 +31,10 @@ class BookLy extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               NewestBooksCubit(getIt.get<HomeRepoImpl>())..getNewestBooks(),
+        ),
+        BlocProvider(
+          create: (context) =>
+          SearchBooksCubit(getIt.get<HomeRepoImpl>())..searchBooks(book: 'computer'),
         ),
       ],
       child: MaterialApp.router(

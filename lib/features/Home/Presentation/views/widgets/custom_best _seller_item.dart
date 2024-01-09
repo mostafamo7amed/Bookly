@@ -1,4 +1,4 @@
-import 'package:bookly/features/Home/Domain/entities/book_entity.dart';
+import 'package:bookly/features/Home/data/data_source/book_model/book_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,7 +8,7 @@ import 'book_rating.dart';
 
 class CustomBooksItem extends StatelessWidget {
   const CustomBooksItem({required this.book, Key? key}) : super(key: key);
-  final BookEntity book;
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +29,7 @@ class CustomBooksItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        book.title!,
+                        book.volumeInfo!.title?? 'unknown',
                         style: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.w600),
                         maxLines: 2,
@@ -39,7 +39,7 @@ class CustomBooksItem extends StatelessWidget {
                         height: 3,
                       ),
                       Text(
-                        book.bookAuthor!,
+                        book.volumeInfo!.authors?[0]?? 'unknown',
                         style: Styles.textStyle18.copyWith(color: Colors.grey),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -53,8 +53,8 @@ class CustomBooksItem extends StatelessWidget {
                           ),
                           const Spacer(),
                           BookPageCount(
-                            count: book.pageCount,
-                            lang: book.rating.toString(),
+                            count: book.volumeInfo!.pageCount??0,
+                            lang: book.volumeInfo!.language??'en',
                           ),
                         ],
                       )

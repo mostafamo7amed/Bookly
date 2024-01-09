@@ -1,7 +1,7 @@
 import 'package:bookly/features/Home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
-import 'package:bookly/features/Home/Domain/models/book_model/book_model/book_model.dart';
+import '../../../data/data_source/book_model/book_model.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
@@ -46,7 +46,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 Opacity(
                   opacity: 0.7,
                   child: Text(
-                    '${bookModel.volumeInfo!.authors![0]}',
+                    bookModel.volumeInfo?.authors?.first ?? 'No Name',
                     textAlign: TextAlign.center,
                     style: Styles.textStyle20.copyWith(
                         fontStyle: FontStyle.italic,
