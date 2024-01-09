@@ -8,7 +8,7 @@ class SimilarBooksInitial extends SimilarBooksState {}
 class SimilarBooksLoading extends SimilarBooksState {}
 
 class SimilarBooksSuccess extends SimilarBooksState {
-  final List<BookEntity> books;
+  final List<BookModel> books;
   SimilarBooksSuccess(this.books);
 }
 

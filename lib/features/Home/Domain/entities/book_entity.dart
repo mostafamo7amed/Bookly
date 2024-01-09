@@ -1,4 +1,4 @@
-class BookEntity {
+class BookEntitiy {
   String? bookId;
   String? title;
   String? image;
@@ -7,7 +7,7 @@ class BookEntity {
   final num? rating;
   final int pageCount;
 
-  BookEntity({
+  BookEntitiy({
     required this.bookId,
     required this.title,
     required this.bookAuthor,

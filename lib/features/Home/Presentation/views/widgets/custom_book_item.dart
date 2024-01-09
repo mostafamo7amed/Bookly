@@ -1,6 +1,5 @@
 import 'package:bookly/core/widgets/custom_loading_widget.dart';
-import 'package:bookly/features/Home/Domain/entities/book_entity.dart';
-import 'package:bookly/features/Home/Domain/models/book_model/book_model/book_model.dart';
+import 'package:bookly/features/Home/data/data_source/book_model/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,7 @@ import '../../../../../core/utils/assets.dart';
 
 class CustomBookItem extends StatelessWidget {
   const CustomBookItem({required this.bookModel, Key? key}) : super(key: key);
-  final BookEntity bookModel;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -23,7 +22,7 @@ class CustomBookItem extends StatelessWidget {
           aspectRatio: 2.6 / 4,
           child: CachedNetworkImage(
             fit: BoxFit.fill,
-            imageUrl: bookModel.image ?? '',
+            imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',
             placeholder: (context, url) => ShimmerWidget(width: 0, height: 0),
             errorWidget: (context, url, error) => const Image(
               fit: BoxFit.fill,
